@@ -1,0 +1,48 @@
+
+.list-group-item{
+    width: 80%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.image{
+    margin-top: 30px;
+    width: 200px;
+    float:left;
+    height: 200px;
+}
+
+.product{
+    padding: 10px;
+    float: left;
+}
+
+.btn-success{
+    width: 140px;
+    float: right;
+    margin-right: 110px;
+    margin-top: 100px;
+    box-shadow: 5px 10px 40px #888888;
+}
+
+.name{
+    padding: 20px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.description{
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 17px;
+    float: left;
+    white-space: pre-line;
+}
+
+.price{
+    margin-top:30px;
+    padding: 20px;
+    font-size: 27px;
+}
