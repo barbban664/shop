@@ -46,3 +46,15 @@
     padding: 20px;
     font-size: 27px;
 }
+
+#content {
+    overflow: hidden;
+    height: 2px;
+    line-height: 20px;
+    width: 300px;
+  }
+  
+  #more:checked + div {
+    height: auto;
+    
+  }

@@ -5,7 +5,9 @@
   <img class="image" src="{{product.image}}" target="_blank" title="Sprawdź">
   <div class="product">
     <div class="name"> {{product.name}}</div>
-    <div class="description angular-with-newlines">{{product.description}}</div>
+    <label><input id="more" type="checkbox"> Zobacz opis
+    <div id="content" class="description angular-with-newlines">{{product.description}}</div>
+  </label>
     <div class="price">{{product.price}},00 zł !</div>
   </div>
   <button (click)="add()" type="button" class="btn btn-success"> Do koszyka
