@@ -8,16 +8,22 @@
 }
 
 .text-center{
-    background-color: #204a81;
+    // background-image: url(C:/Users/Basia/Desktop/A.jpg);
+    // background-repeat: repeat;
+    background-color: rgb(190, 124, 0);
 }
 
-.btn-primary{
+.btn-dark{
     padding: 14px 28px;
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    border:none;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(53, 53, 53);
+    color:white;
+    font-weight: bold;
 }
 
 .btn-group{

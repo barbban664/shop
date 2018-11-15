@@ -3,11 +3,15 @@
     margin-top: 50px;
     margin-left: 10%;
     margin-right: 10%;
+    color:white;
 }
 
 .input-group{
     padding: 10px;
     font-size: 20px;
+    border: 1px solid rgb(53, 53, 53);
+    padding: 0px;
+    background-clip: border-box;
 }
 
 .input-group-text{
@@ -22,20 +26,42 @@
     width: 50%;
 }
 
-.btn-success{
+.btn-warning{
     width: 270px;
     height: 80px;
     margin-right: 110px;
     margin-top: 20px;
-    box-shadow: 10px 15px 45px #888888;
+    box-shadow: 10px 15px 45px rgb(53, 53, 53);
     margin: -20px -50px; 
     position:relative;
     top:50%; 
     left:45%;
     font-size: 25px;
     font-weight: bold;
+    border-radius: 15px;
+}
+
+.btn-warning[disabled]{
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
 .text{
-    width: 150px;
+    width: 160px;
+}
+
+.if{
+    color: white;
+    font-size: 16px;
+}
+
+.input-group-text{
+    color:white;
+    background-color: rgb(51, 51, 51);
+}
+
+.valid{
+    color:red;
+    font-size: 17px;
+    margin-left: 5px;
 }

@@ -1,10 +1,25 @@
+
+
 .container{
     margin-top: 100px;
-    background-color: #204a81;
+    // background-image: url(C:/Users/Basia/Desktop/A.jpg);
+    // background-repeat: repeat;
     padding: 20px;
     color: white;
+    width: 60%;
+    background-color: rgb(190, 124, 0);
 }
 
 .remember{
     font-size: 20px;
+}
+
+.btn-warning{
+    color: rgb(53, 53, 53);
+    margin-bottom: 20px;
+}
+
+.btn-warning[disabled]{
+    opacity: 0.55;
+    cursor: not-allowed;
 }

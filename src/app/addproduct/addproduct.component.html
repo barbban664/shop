@@ -1,47 +1,49 @@
 <app-main></app-main>
 
 <form [formGroup]="form">
-<div class="all">
-    <div class="name input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="text input-group-text">Nazwa produktu</label>
+    <div class="all">
+        <div class="name input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="text input-group-text">Nazwa produktu<span class="valid">*</span></label>
+            </div>
+            <input formControlName="name" class="form-control">
         </div>
-        <input formControlName="name" class="form-control">
-    </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="text input-group-text">Producent</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="text input-group-text">Producent</label>
+            </div>
+            <input formControlName="producer" class="form-control">
         </div>
-        <input formControlName="producer" class="form-control">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="text input-group-text">Opis</label>
+            </div>
+            <input formControlName="description" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="text input-group-text">Adres zdjęcia</label>
+            </div>
+            <input formControlName="image" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="text input-group-text">Tagi</label>
+            </div>
+            <input formControlName="tags" class="form-control">
+        </div>
+        <div class="pr input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="text input-group-text">Cena<span class="valid">*</span></label>
+            </div>
+            <input formControlName="price" class="form-control">
+            <div class="input-group-append">
+                <span class="input-group-text">zł</span>
+            </div>
+        </div>
+        <div class="if" *ngIf="form.controls['price'].hasError('pattern')">Cena musi być
+            liczbą</div>
     </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="text input-group-text">Opis</label>
-        </div>
-        <input formControlName="description" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="text input-group-text">Adres zdjęcia</label>
-        </div>
-        <input formControlName="image" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="text input-group-text">Tagi</label>
-        </div>
-        <input formControlName="tags" class="form-control">
-    </div>
-    <div class="pr input-group mb-3">
-        <div class="input-group-prepend">
-            <label class="text input-group-text">Cena</label>
-        </div>
-        <input formControlName="price" class="form-control">
-        <div class="input-group-append">
-            <span class="input-group-text">zł</span>
-        </div>
-    </div>
-</div>
-<button type="button" class="btn btn-success" (click)="add()" [disabled]="!form.valid">Dodaj przedmiot</button>
+    <button type="button" class="btn btn-warning" (click)="add()" [disabled]="!form.valid">Dodaj przedmiot</button>
 </form>

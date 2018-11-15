@@ -5,6 +5,9 @@
     margin-bottom: 20px;
     margin-left: 10%;
     margin-right: 10%;
+    border: 5px double rgb(53, 53, 53);
+    padding: 15px;
+    background-clip: border-box;
 }
 
 .image{
@@ -19,12 +22,15 @@
     float: left;
 }
 
-.btn-success{
+.btn-warning{
     width: 140px;
     float: right;
     margin-right: 110px;
     margin-top: 100px;
-    box-shadow: 5px 10px 40px #888888;
+    box-shadow: 5px 10px 40px rgb(53, 53, 53);
+    color: rgb(53, 53, 53);
+    border-radius: 12px;
+    font-weight: bold;
 }
 
 .name{
@@ -56,5 +62,4 @@
   
   #more:checked + div {
     height: auto;
-    
   }

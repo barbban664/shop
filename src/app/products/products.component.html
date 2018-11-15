@@ -2,15 +2,15 @@
 <app-main></app-main>
 
 <div class="list-group-item" *ngFor="let product of products">
-  <img class="image" src="{{product.image}}" target="_blank" title="Sprawdź">
+  <img class="image" src="{{product.image}}" target="_blank" title="{{product.name}}">
   <div class="product">
     <div class="name"> {{product.name}}</div>
     <label><input id="more" type="checkbox"> Zobacz opis
     <div id="content" class="description angular-with-newlines">{{product.description}}</div>
   </label>
-    <div class="price">{{product.price}},00 zł !</div>
+    <div class="price">{{product.price}} zł !</div>
   </div>
-  <button (click)="add()" type="button" class="btn btn-success"> Do koszyka
+  <button (click)="add()" type="button" class="btn btn-warning"> Do koszyka
     <i class="fas fa-shopping-basket"></i></button>
 
 </div>

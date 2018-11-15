@@ -21,7 +21,7 @@ export class AddproductComponent implements OnInit {
       description: [],
       image: [],
       tags:[],
-      price: [null, [Validators.required]],
+      price: [null, [Validators.required, Validators.pattern("^[0-9]*$"),]],
       name: [null, [Validators.required]]
     });
    }
