@@ -12,6 +12,8 @@ import { MainComponent } from './main/main.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { CartComponent } from './cart/cart.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { RegistrationComponent } from './registration/registration.component';
     AddproductComponent,
     CartComponent,
     RegistrationComponent,
+    ModalComponent
 
   ],
   imports: [
@@ -31,9 +34,12 @@ import { RegistrationComponent } from './registration/registration.component';
     AppRouting,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }
