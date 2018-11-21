@@ -25,19 +25,15 @@ export class LoginComponent implements OnInit {
 
   }
 
-  // logIn() {
-  //   this.http.post('http://localhost:8443/api/user/login ', {
+  logIn() {
+    this.http.post('http://localhost:8443/api/user/login', {
 
-  //     login: this.form.value.login,
-  //     password: this.form.value.password
-  //   })
-  //     .subscribe(() =>
-  //       this.router.navigate(['../shop'])
-
-  //       // (err) => {
-  //       //   console.error(err);
-  //       // }
-  //     );
-  // };
+      login: this.form.value.login,
+      password: this.form.value.password
+    })
+      .subscribe(() =>
+        this.router.navigate(['../shop'])
+      );
+  };
 
 }
