@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,12 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  title= 'Logowanie';
-  login: string;
-  password: string;
+  title = 'Logowanie';
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
 
@@ -26,9 +25,19 @@ export class LoginComponent implements OnInit {
 
   }
 
-  logIn() {
-    this.router.navigate(['../shop'])
-    this.form.reset();
-  }
+  // logIn() {
+  //   this.http.post('http://localhost:8443/api/user/login ', {
+
+  //     login: this.form.value.login,
+  //     password: this.form.value.password
+  //   })
+  //     .subscribe(() =>
+  //       this.router.navigate(['../shop'])
+
+  //       // (err) => {
+  //       //   console.error(err);
+  //       // }
+  //     );
+  // };
 
 }
