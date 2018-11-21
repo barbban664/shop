@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
   roles: role[]; 
 
-  constructor(private http: HttpClient, private fb: FormBuilder) { }
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
 
@@ -27,32 +27,29 @@ export class RegistrationComponent implements OnInit {
 
 
     this.form = this.fb.group({
+
+      login:[],
       name:[],
       lastName:[],
-      login:[],
       password:[],
-      confirmPassword:[],
+      password_confirm: [],
       role:[],
 
     });
   }
 
-  // add() {
-  //   this.http.post('http://localhost:8443/api/user/add ', {
+  add() {
+    this.http.post('http://localhost:8443/api/user/add', {
 
-  //     name: this.form.value.name,
-  //     lastName: this.form.value.lastName,
-  //     login: this.form.value.login,
-  //     password: this.form.value.password,
-  //     role: this.form.value.role
-  //   })
-  //     .subscribe(() =>
-  //       this.router.navigate(['../login'])
-
-  //       // (err) => {
-  //       //   console.error(err);
-  //       // }
-  //     );
-  // };
+      name: this.form.value.name,
+      lastName: this.form.value.lastName,
+      login: this.form.value.login,
+      password: this.form.value.password,
+      role: this.form.value.role
+    })
+      .subscribe(() =>
+        this.router.navigate(['../login'])
+      );
+  };
 
 }
