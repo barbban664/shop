@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ModalComponent } from '../modal/modal.component';
+import { UserRestService } from '../services/user-rest.service';
 
 
 @Component({
@@ -19,30 +20,45 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private ModalService: BsModalService) { }
+  constructor(private http: HttpClient,
+     private fb: FormBuilder,
+     private router: Router,
+     private ModalService: BsModalService,
+     private userRestService: UserRestService) { }
 
   ngOnInit() {
 
     this.form = this.fb.group({
       login: [null, Validators.required],
-      password: [null, [Validators.required, Validators.minLength(6)]]
+      password: [null, [Validators.required, Validators.minLength(6)]],
     });
 
   }
 
   logIn() {
-    this.http.post('http://localhost:8443/api/user/login', {
 
-      login: this.form.value.login,
-      password: this.form.value.password
-    })
-      .subscribe(() =>
+    this.userRestService.login({login: this.form.value.login,
+      password: this.form.value.password})
+      .subscribe ((result) => 
+       
         this.router.navigate(['../shop']),
-
-        (err) => {
-          console.error(err);
+              (err) => {
           this.modalRef = this.ModalService.show(ModalComponent);
         }
       );
-  }
+    }
+
+  //   this.http.post('http://localhost:8443/api/user/login', {
+
+  //     login: this.form.value.login,
+  //     password: this.form.value.password
+  //   })
+  //     .subscribe(() =>
+  //       this.router.navigate(['../shop']),
+
+  //       (err) => {
+  //         this.modalRef = this.ModalService.show(ModalComponent);
+  //       }
+  //     );
+  // }
 };

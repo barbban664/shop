@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './modal/modal.component';
+import { UserRestService } from './services/user-rest.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { ModalComponent } from './modal/modal.component';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [UserRestService],
   bootstrap: [AppComponent],
 
   entryComponents: [ModalComponent]

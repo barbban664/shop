@@ -19,11 +19,11 @@ export class RegistrationComponent implements OnInit {
 
       this.http.get('http://localhost:8443/api/user/roles').subscribe(
       (result: role[])=> {
-        this.roles = result.map((p: any) => {
-          return p;
+        console.debug(result)
+        this.roles = result
         });
-      },
-    );
+    //   },
+    // );
 
 
     this.form = this.fb.group({
