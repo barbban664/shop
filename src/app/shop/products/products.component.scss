@@ -8,6 +8,7 @@
     border: 5px double rgb(53, 53, 53);
     padding: 15px;
     background-clip: border-box;
+    margin-top: 20px;
 }
 
 .image{
@@ -55,11 +56,15 @@
 
 #content {
     overflow: hidden;
-    height: 10px;
+    height: 100px;
     line-height: 20px;
     width: 300px;
   }
   
   #more:checked + div {
     height: auto;
+  }
+
+  #more{
+      margin-top: 100px;;
   }

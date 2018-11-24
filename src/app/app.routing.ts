@@ -1,10 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders, Component } from '@angular/core';
 import { LoginComponent } from './login/login.component';
-import { ProductsComponent } from './products/products.component';
-import { AddproductComponent } from './addproduct/addproduct.component';
-import { CartComponent } from './cart/cart.component';
+import { ProductsComponent } from './shop/products/products.component';
+import { AddproductComponent } from './shop/addproduct/addproduct.component';
+import { CartComponent } from './shop/cart/cart.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ShopComponent } from './shop/shop.component';
 
 export const routes: Routes = [
 
@@ -13,23 +14,27 @@ export const routes: Routes = [
         redirectTo: 'login',
         pathMatch: 'full'
     },
-
     {
         path: 'login',
         component: LoginComponent,
     },
     {
         path: 'shop',
-        component: ProductsComponent,
-    },
-    {
-        path: 'addproduct',
-        component: AddproductComponent,
-    },
-    {
-        path: 'cart',
-        component: CartComponent,
-    },
+        component: ShopComponent,
+        children: [
+          {
+            path: '',
+            component: ProductsComponent,
+          },
+          {
+            path: 'addproduct',
+            component: AddproductComponent,
+          },
+          {
+            path: 'cart',
+            component: CartComponent,
+          },
+        ]},
     {
         path: 'registration',
         component: RegistrationComponent,

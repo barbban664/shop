@@ -18,8 +18,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
 
       this.http.get('http://localhost:8443/api/user/roles').subscribe(
-      (result: role[])=> {
-        console.debug(result)
+      (result: role[])=> { 
         this.roles = result
         });
     //   },
