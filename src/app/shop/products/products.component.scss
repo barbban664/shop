@@ -49,14 +49,14 @@
 }
 
 .price{
-    margin-top:30px;
-    padding: 20px;
+    margin-top: 20px;
+    padding: 5px;
     font-size: 27px;
 }
 
 #content {
     overflow: hidden;
-    height: 100px;
+    height: 50px;
     line-height: 20px;
     width: 300px;
   }
@@ -67,4 +67,10 @@
 
   #more{
       margin-top: 100px;;
+  }
+
+  .producer{
+      font-weight: bold;
+      text-align: center;
+      float: right;
   }

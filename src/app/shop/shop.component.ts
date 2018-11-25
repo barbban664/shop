@@ -15,8 +15,8 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
   }
   
-  onClicked($event) {
-    this.counts = $event;
-  }
+  // onClicked($event) {
+  //   this.counts = $event;
+  // }
 }
 

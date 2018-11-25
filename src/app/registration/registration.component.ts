@@ -3,6 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { role } from './role';
+import { UserRestService } from '../services/user-rest.service';
+
+
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,7 +17,11 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
   roles: role[]; 
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router,
+    private userRestService: UserRestService) { }
 
   ngOnInit() {
 
@@ -38,17 +46,24 @@ export class RegistrationComponent implements OnInit {
   }
 
   add() {
-    this.http.post('http://localhost:8443/api/user/add', {
 
+    this.userRestService.registration({login: this.form.value.login,
       name: this.form.value.name,
       lastName: this.form.value.lastName,
-      login: this.form.value.login,
       password: this.form.value.password,
-      role: this.form.value.role
-    })
+      role: this.form.value.role})
       .subscribe(() =>
-        this.router.navigate(['../login'])
-      );
+      this.router.navigate(['../login'])
+    );
+
+    // this.http.post('http://localhost:8443/api/user/add', {
+
+    //   name: this.form.value.name,
+    //   lastName: this.form.value.lastName,
+    //   login: this.form.value.login,
+    //   password: this.form.value.password,
+    //   role: this.form.value.role
+    // })
   };
 
 }

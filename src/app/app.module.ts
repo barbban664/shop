@@ -15,6 +15,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './modal/modal.component';
 import { UserRestService } from './services/user-rest.service';
 import { ShopComponent } from './shop/shop.component';
+import { AddProductService } from './services/add-product.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import { ShopComponent } from './shop/shop.component';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [UserRestService],
+  
+  providers: [UserRestService,
+  AddProductService],
+
   bootstrap: [AppComponent],
 
   entryComponents: [ModalComponent]

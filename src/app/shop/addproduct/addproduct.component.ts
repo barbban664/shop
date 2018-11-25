@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
+import { AddProductService } from 'src/app/services/add-product.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -12,7 +13,11 @@ export class AddproductComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router){ }
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router,
+    private userRestService: AddProductService){ }
 
   ngOnInit () {
 
@@ -27,17 +32,28 @@ export class AddproductComponent implements OnInit {
    }
 
   add() {
-   this.http.post('http://localhost:8443/api/product/add ', {
 
-    producer: this.form.value.producer,
-    description: this.form.value.description,
-    img: this.form.value.image,
-    tags: [this.form.value.tags],
-    price: this.form.value.price,
-    name: this.form.value.name
-   })
-   .subscribe(() =>
-    this.router.navigate(['../shop'])
+    this.userRestService.addProduct({
+      producer: this.form.value.producer,
+      description: this.form.value.description,
+      img: this.form.value.image,
+      tags: [this.form.value.tags],
+      price: this.form.value.price,
+      name: this.form.value.name})
+      .subscribe (() => 
+        this.router.navigate(['../shop']),
+
    )};
 
+// this.http.post('http://localhost:8443/api/product/add ', {
+
+//     producer: this.form.value.producer,
+//     description: this.form.value.description,
+//     img: this.form.value.image,
+//     tags: [this.form.value.tags],
+//     price: this.form.value.price,
+//     name: this.form.value.name
+//    })
+//    .subscribe(() =>
+//     this.router.navigate(['../shop'])
 }
