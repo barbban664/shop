@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
 @Input() products: product[];
 
 // count = 0; 
-// @Output() counter: EventEmitter<any> = new EventEmitter<any>();
+// counter: EventEmitter<any> = new EventEmitter<any>();
 
 constructor(private http: HttpClient){ }
 // products: product[];
@@ -43,9 +43,9 @@ constructor(private http: HttpClient){ }
     );
   }
 
-  // addProduct(){
-  //   this.count ++;
-  //   this.counter.emit(this.count);
-  // }
+  //  addProduct(){
+  //    this.count ++;
+  //    this.counter.emit(this.count);
+  //  }
  
 }

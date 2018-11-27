@@ -35,4 +35,8 @@ export class UserRestService extends Rest {
       return this.http.post(this.url + 'user/add', reg)
     }
 
+    getRole(){
+      return this.http.get(this.url + 'user/roles')
+      }
+
 }

@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { role } from './role';
 import { UserRestService } from '../services/user-rest.service';
 
+interface Role {
+  id;
+  name;
+}
 
 
 @Component({
@@ -12,10 +15,12 @@ import { UserRestService } from '../services/user-rest.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
+
 export class RegistrationComponent implements OnInit {
 
   form: FormGroup;
-  roles: role[]; 
+  roles: Role[];
+
 
   constructor(
     private http: HttpClient,
@@ -25,10 +30,16 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
 
-      this.http.get('http://localhost:8443/api/user/roles').subscribe(
-      (result: role[])=> { 
-        this.roles = result
-        });
+    
+      this.userRestService.getRole()
+        .subscribe((result: Role[])=> { 
+             this.roles = result
+            });
+    
+      // this.http.get('http://localhost:8443/api/user/roles').subscribe(
+      // (result: role[])=> { 
+      //   this.roles = result
+      //   });
     //   },
     // );
 
@@ -55,6 +66,11 @@ export class RegistrationComponent implements OnInit {
       .subscribe(() =>
       this.router.navigate(['../login'])
     );
+  };
+  
+};
+
+  // var div = '<div>' + viewName.name + ' ' + viewName.lastName + '</div>';
 
     // this.http.post('http://localhost:8443/api/user/add', {
 
@@ -64,6 +80,4 @@ export class RegistrationComponent implements OnInit {
     //   password: this.form.value.password,
     //   role: this.form.value.role
     // })
-  };
-
-}
+  

@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { ProductsComponent } from './products/products.component';
+import { Component, OnInit, Inject } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-shop',
@@ -10,11 +10,14 @@ export class ShopComponent implements OnInit {
 
     counts: number = 0;
 
-  constructor() { }
+  constructor( ) {
+     
+  }
 
   ngOnInit() {
+   
   }
-  
+
   // onClicked($event) {
   //   this.counts = $event;
   // }

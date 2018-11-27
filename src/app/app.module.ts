@@ -16,6 +16,7 @@ import { ModalComponent } from './modal/modal.component';
 import { UserRestService } from './services/user-rest.service';
 import { ShopComponent } from './shop/shop.component';
 import { AddProductService } from './services/add-product.service';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { AddProductService } from './services/add-product.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BrowserModule,
+	  StorageServiceModule
   ],
   
   providers: [UserRestService,
