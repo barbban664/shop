@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -8,14 +9,21 @@ import { UserService } from '../services/user.service';
 })
 export class ShopComponent implements OnInit {
 
-    counts: number = 0;
-
-  constructor( ) {
-     
+  constructor(
+    private router: Router,
+    private UserService: UserService) {
   }
+
+  currentUser:any;
 
   ngOnInit() {
    
+    this.currentUser = this.UserService.user('currentUser');
+  }
+
+  logout() {
+    this.UserService.clear();
+    this.router.navigate(['/login']);
   }
 
   // onClicked($event) {

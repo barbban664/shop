@@ -35,13 +35,6 @@ export class RegistrationComponent implements OnInit {
         .subscribe((result: Role[])=> { 
              this.roles = result
             });
-    
-      // this.http.get('http://localhost:8443/api/user/roles').subscribe(
-      // (result: role[])=> { 
-      //   this.roles = result
-      //   });
-    //   },
-    // );
 
 
     this.form = this.fb.group({
@@ -69,15 +62,4 @@ export class RegistrationComponent implements OnInit {
   };
   
 };
-
-  // var div = '<div>' + viewName.name + ' ' + viewName.lastName + '</div>';
-
-    // this.http.post('http://localhost:8443/api/user/add', {
-
-    //   name: this.form.value.name,
-    //   lastName: this.form.value.lastName,
-    //   login: this.form.value.login,
-    //   password: this.form.value.password,
-    //   role: this.form.value.role
-    // })
   

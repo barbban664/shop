@@ -17,6 +17,8 @@ import { UserRestService } from './services/user-rest.service';
 import { ShopComponent } from './shop/shop.component';
 import { AddProductService } from './services/add-product.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { UserService } from './services/user.service';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { StorageServiceModule} from 'angular-webstorage-service';
   ],
   
   providers: [UserRestService,
-  AddProductService],
+  AddProductService,
+UserService,
+CartService],
 
   bootstrap: [AppComponent],
 
