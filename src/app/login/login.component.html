@@ -17,11 +17,8 @@
       <div *ngIf="form.controls['password'].hasError('minlength')">Hasło musi mieć co najmniej 6 znaków</div>
     </div>
     <div class="col-12 text-center">
-      <button (click)="logIn()" class="btn btn-warning btn-lg" [disabled]="!form.valid">Zaloguj</button>
-      <div><button [routerLink]= "['../registration']" class=" button1 btn btn-warning btn-lg" >Zarejestruj się</button></div>
+      <button (click)="logIn()" class=" button btn btn-warning btn-lg" [disabled]="!form.valid">Zaloguj</button>
+      <button [routerLink]= "['../registration']" class=" button1 btn btn-warning btn-lg" >Zarejestruj się</button>
     </div>
-    <label class="remember">
-      <input type="checkbox" checked="checked"> Zapamiętaj mnie
-    </label>
   </form>
 </div>

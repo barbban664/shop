@@ -2,15 +2,14 @@
   <img class="image" src="{{product.image}}" target="_blank" title="{{product.name}}">
   <div class="product">
     <div class="producer">Producent: {{product.producer}}</div>
-    <div class="name"> {{product.name}}</div>
+    <div class="name "> {{product.name}}</div>
     <label><input id="more" type="checkbox"> Zobacz więcej
       <div id="content" class="description angular-with-newlines">{{product.description}}
       </div>
     </label>
     <div class="price">{{product.price}} zł !</div>
-
   </div>
-  <button (click)="addProduct()" type="button" class="btn btn-warning"> Do koszyka
+  <button (click)="addProduct(product)" type="button" class="btn btn-warning"> Do koszyka
     <i class="fas fa-shopping-basket"></i></button>
 
 </div>

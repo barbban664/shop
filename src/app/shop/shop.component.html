@@ -2,7 +2,7 @@
   crossorigin='anonymous'>
   
 
-<div class="text-center">
+<div class="cont">
   <div class="logo text-center">Ekstra sklepik <i class="far fa-thumbs-up"></i></div>
   <div class="btn-group btn-group-lg">
     <button class="btn btn-dark" [routerLink]="['.']">Strona główna</button>
@@ -10,6 +10,7 @@
     <button class="btn btn-dark" [routerLink]="['./cart']">Koszyk</button>
     <button class="btn btn-dark" (click)=logout()>Wyloguj</button>
   </div>
+  <div class="cart"><button class="cartButton" [routerLink]="['./cart']">Koszyk: {{productsCart}} szt.</button></div>
   <div class="user"><i class="fas fa-user"></i>{{currentUser.login}}</div>
 </div>
 <router-outlet></router-outlet>

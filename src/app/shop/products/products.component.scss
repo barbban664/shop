@@ -54,7 +54,13 @@
     font-size: 27px;
 }
 
-#content {
+  .producer{
+      font-weight: bold;
+      text-align: center;
+      float: right;
+  }
+
+  #content {
     overflow: hidden;
     height: 50px;
     line-height: 20px;
@@ -67,10 +73,4 @@
 
   #more{
       margin-top: 100px;;
-  }
-
-  .producer{
-      font-weight: bold;
-      text-align: center;
-      float: right;
   }

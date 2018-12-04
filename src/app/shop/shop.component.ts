@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-shop',
@@ -11,7 +12,8 @@ export class ShopComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private UserService: UserService) {
+    private UserService: UserService,
+    private CartService: CartService) {
   }
 
   currentUser:any;
@@ -24,6 +26,10 @@ export class ShopComponent implements OnInit {
   logout() {
     this.UserService.clear();
     this.router.navigate(['/login']);
+  }
+
+  get productsCart() {
+    return this.CartService.productsCart;
   }
 
   // onClicked($event) {
