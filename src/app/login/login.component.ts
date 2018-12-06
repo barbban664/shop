@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { ModalComponent } from '../modal/modal.component';
 import { UserRestService } from '../services/user-rest.service';
 import { UserService } from '../services/user.service';
 import { user } from '../user';
+import { ModalService } from '../services/modal.service';
 
 
 @Component({
@@ -17,17 +14,16 @@ import { user } from '../user';
 })
 export class LoginComponent implements OnInit {
 
-  modalRef: BsModalRef;
   title = 'Logowanie';
   form: FormGroup;
 
 
-  constructor(private http: HttpClient,
+  constructor(
      private fb: FormBuilder,
      private router: Router,
-     private ModalService: BsModalService,
      private userRestService: UserRestService,
-     private UserService: UserService) { }
+     private UserService: UserService,
+     private ModalService: ModalService) { }
 
   ngOnInit() {
 
@@ -47,11 +43,10 @@ export class LoginComponent implements OnInit {
           this.UserService.set('currentUser', result);
           this.router.navigate(['../shop']);
         }
-        console.log(result)
       },
       
         (err) => {
-          this.modalRef = this.ModalService.show(ModalComponent);
+          this.ModalService.openModal('Niepoprawny login lub hasło');
         }
       );
     }

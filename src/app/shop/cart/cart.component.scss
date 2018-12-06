@@ -1,0 +1,76 @@
+
+.list-group-item{
+    width: 80%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 5px double rgb(53, 53, 53);
+    padding: 15px;
+    background-clip: border-box;
+    margin-top: 20px;
+}
+
+.image{
+    margin-top: 30px;
+    width: 200px;
+    float:left;
+    height: 200px;
+}
+
+.product{
+    padding: 10px;
+    float: left;
+}
+
+.btn-warning{
+    width: 140px;
+    float: right;
+    margin-right: 110px;
+    margin-top: 70px;
+    box-shadow: 5px 10px 40px rgb(53, 53, 53);
+    color: rgb(53, 53, 53);
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.name{
+    padding: 20px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.description{
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 14px;
+    float: left;
+    white-space: pre-line;
+}
+
+.price{
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 27px;
+}
+
+  .producer{
+      font-weight: bold;
+      text-align: center;
+      float: right;
+  }
+
+  #content {
+    overflow: hidden;
+    height: 50px;
+    line-height: 20px;
+    width: 300px;
+  }
+  
+  #more:checked + div {
+    height: auto;
+  }
+
+  #more{
+      margin-top: 100px;;
+  }

@@ -1,18 +1,21 @@
 export class product{
 
-    image: any;
+    img: any;
     name:string;
     description:string;
     price:number;
     producer: string;
+    count: number;
     
 
-constructor(image: any, name:string, description:string, price: number, producer:string){
+constructor(img: any, name:string, description:string, price: number, producer:string){
     
-    this.image= image;
+    this.img= img;
     this.name= name;
     this.description= description;
     this.price= price;
     this.producer= producer;
+    this.count=0;
+
 }
 }

@@ -25,18 +25,18 @@
     font-weight: bold;
 }
 
-.btn-group{
-    margin-left: 80px;
-}
+// .btn-group{
+//     margin-left: 80px;
+// }
 
 .user{
     font-weight: bold;
     color:white;
     font-size: 16px !important;
-    display: inline-block;
-    margin-top: 10px;
+    margin-top: 25px;
     margin-bottom: 10px;
-    margin-left: 70px;
+    float:right;
+    margin-right: 100px;
 }
 
 .fa-user{
@@ -47,11 +47,11 @@
     font-weight: bold;
     color:white;
     font-size: 16px !important;
-    display: inline-block;
-    margin-top: 10px;
+    float: right;
+    margin-top: 20px;
     margin-bottom: 10px;
     text-transform: uppercase;
-    margin-left:50px;
+    margin-right:50px;
 }
 
 .cartButton{

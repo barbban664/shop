@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRouting } from './app.routing';
 import { RouterModule } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AddproductComponent } from './shop/addproduct/addproduct.component';
 import { CartComponent } from './shop/cart/cart.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -19,6 +19,10 @@ import { AddProductService } from './services/add-product.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { UserService } from './services/user.service';
 import { CartService } from './services/cart.service';
+import { InterceptorService } from './services/interceptor.service';
+import { ModalService } from './services/modal.service';
+import { RoleService } from './services/role.service';
+import { ImageService } from './services/image.service';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,7 @@ import { CartService } from './services/cart.service';
     CartComponent,
     RegistrationComponent,
     ModalComponent,
-    ShopComponent,
-
+    ShopComponent
   ],
   imports: [
     HttpClientModule,
@@ -46,8 +49,15 @@ import { CartService } from './services/cart.service';
   
   providers: [UserRestService,
   AddProductService,
-UserService,
-CartService],
+  UserService,
+  ModalService,
+  CartService,
+  RoleService,
+  ImageService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
 
   bootstrap: [AppComponent],
 

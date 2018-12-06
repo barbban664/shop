@@ -10,6 +10,7 @@ interface addProductData {
   tags;
   price;
   name;
+  userId;
 }
 
 @Injectable(

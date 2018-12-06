@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -9,6 +9,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class ModalComponent implements OnInit {
 
   constructor( public modalRef: BsModalRef) { }
+
+  public text;
 
   ngOnInit() {
   }

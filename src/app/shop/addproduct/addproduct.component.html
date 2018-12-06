@@ -21,11 +21,11 @@
             </div>
             <input formControlName="description" class="form-control">
         </div>
-        <div class="input-group mb-3">
+        <div class=" mb-3">
             <div class="input-group-prepend">
                 <label class="text input-group-text">Adres zdjęcia<span class="valid">*</span></label>
             </div>
-            <input formControlName="image" class="form-control">
+            <input class="img" (change)="onFileChange($event)" type="file" multiple>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">

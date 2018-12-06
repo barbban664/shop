@@ -39,4 +39,11 @@ export class UserRestService extends Rest {
       return this.http.get(this.url + 'user/roles')
       }
 
+    getProducts(role, userId){
+      if (role==1 || role==2){
+        return this.http.get(this.url + 'product/list')
+      }
+      else if (role==3){
+        return this.http.get(this.url + 'product/list/' + userId)}
+      }
 }
