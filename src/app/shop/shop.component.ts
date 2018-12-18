@@ -13,7 +13,7 @@ export class ShopComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public UserService: UserService,
+    public userService: UserService,
     private CartService: CartService,
     public RoleService: RoleService) {
   }
@@ -22,19 +22,21 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
    
-    this.currentUser = this.UserService.user('currentUser');
+    this.currentUser = this.userService.user('currentUser');
     this.RoleService.Role(this.currentUser.role);
+
     // console.log(this.RoleService.user)
     
   }
 
   logout() {
-    this.UserService.clear();
+    this.userService.clear();
     this.router.navigate(['/login']);
   }
 
   get productsCart() {
     return this.CartService.productsCart;
+    
   }
 
 }

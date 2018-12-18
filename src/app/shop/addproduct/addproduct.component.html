@@ -45,5 +45,6 @@
         <div class="if" *ngIf="form.controls['price'].hasError('pattern')">Cena musi być
             liczbą</div>
     </div>
-    <button type="button" class="btn btn-warning" (click)="add()" [disabled]="!form.valid">Dodaj przedmiot</button>
+    <button  type="button" class="btn btn-warning"  (click)="add()" [disabled]="!form.valid">{{isEdit ? 'Edytuj produkt' : 'Dodaj produkt'}}</button>
+
 </form>

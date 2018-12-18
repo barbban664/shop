@@ -5,37 +5,40 @@ import { UserService} from './user.service';
 @Injectable()
 export class CartService {
 
-  constructor(private UserService: UserService) { }
+  constructor(private userService: UserService) { }
 
   cart: product[] = [];
   idx: number;
 
-
   add(Product: product) {
-    this.cart = this.UserService.user('cart');
+    this.cart = this.userService.user('cart');
     if (this.cart == null) {
       this.cart = [];
     }
     this.cart.push(Product);
-    this.UserService.set('cart', this.cart);
+    this.userService.set('cart', this.cart);
   }
 
   get() {
-    this.cart = this.UserService.user('cart');
+    this.cart = this.userService.user('cart');
+    if (this.cart == null){
+      return [];
+    }
     return this.cart;
   }
 
   get productsCart() {
-    return this.cart.length;
+      return this.get().length;
   }
 
-  // remove(product) {
-  //   this.cart= this.UserService.user('cart');
+  remove(product: product, cart) {
 
-  //   // this.cart.splice(this.cart.indexOf(product), 1);
-	// 	// 	}
-  //    this.idx = this.cart.indexOf(product);
-  //   // if (this.idx !== -1) {
-  //   //     this.cart.splice(this.idx, 1);
-  //   }        
+    this.idx = cart.findIndex((item) => item.id == product.id);
+    if (this.idx !== -1) {
+      cart.splice(this.idx, 1);
+      this.userService.set('cart', cart);
+    }
+    return cart;
   }
+}
+

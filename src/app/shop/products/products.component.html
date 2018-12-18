@@ -12,7 +12,7 @@
   </div>
   <button *ngIf="RoleService.user==2" (click)="addProduct(product)" type="button" class="btn btn-warning"> Do koszyka
     <i class="fas fa-shopping-basket"></i></button>
-  <button *ngIf="RoleService.user==3" (click)="edit(product)" type="button" class="btn btn-warning"> Edytuj</button>
-  <button *ngIf="RoleService.user==3" (click)="remove(product)" type="button" class="btn btn-warning"> Usuń</button>
+  <button *ngIf="RoleService.user==3" (click)="edit(product)" [routerLink]="['edit', product.id]" type="button" class="btn btn-warning"> Edytuj</button>
+  <button *ngIf="RoleService.user==3" (click)="delete(product)" type="button" class="btn btn-warning"> Usuń</button>
 
 </div>

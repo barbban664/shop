@@ -15,14 +15,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './modal/modal.component';
 import { UserRestService } from './services/user-rest.service';
 import { ShopComponent } from './shop/shop.component';
-import { AddProductService } from './services/add-product.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { UserService } from './services/user.service';
 import { CartService } from './services/cart.service';
 import { InterceptorService } from './services/interceptor.service';
 import { ModalService } from './services/modal.service';
 import { RoleService } from './services/role.service';
-import { ImageService } from './services/image.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,7 @@ import { ImageService } from './services/image.service';
     CartComponent,
     RegistrationComponent,
     ModalComponent,
-    ShopComponent
+    ShopComponent,
   ],
   imports: [
     HttpClientModule,
@@ -48,12 +47,11 @@ import { ImageService } from './services/image.service';
   ],
   
   providers: [UserRestService,
-  AddProductService,
   UserService,
   ModalService,
   CartService,
   RoleService,
-  ImageService,{
+  ProductService,{
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi: true
