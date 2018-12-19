@@ -1,8 +1,12 @@
+<div>Do zapłaty: {{sum}}</div>
 <div class="list-group-item" *ngFor="let product of cart">
   <img class="image" width="200" height="200" [src]="'http://localhost:8443/images/'+ product.img[product.count]"
     (click)="change(product)" target="_blank" title="{{product.name}}">
   <div class="product">
-    <div class="producer">Producent: {{product.producer}}</div>
+    <div class="information">
+      <div class="producer">Producent: {{product.producer}}</div>
+      <div class="seller">Sprzedawca: {{product.seller}} </div>
+    </div>
     <div class="name "> {{product.name}}</div>
     <label><input id="more" type="checkbox"> Zobacz więcej
       <div id="content" class="description angular-with-newlines">{{product.description}}

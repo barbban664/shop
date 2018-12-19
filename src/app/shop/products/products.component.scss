@@ -54,11 +54,16 @@
     font-size: 27px;
 }
 
-  .producer{
-      font-weight: bold;
-      text-align: center;
-      float: right;
-  }
+.information{
+    float: right;
+    flex-direction: column;
+    font-weight: bold;
+    text-align: left;
+}
+
+.producer{
+    margin-bottom: 5px;
+}
 
   #content {
     overflow: hidden;

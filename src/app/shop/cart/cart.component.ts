@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class CartComponent implements OnInit {
 
   cart: product[] = [];
+  sum: number = 0;
 
   constructor(private CartService: CartService,
     private productService: ProductService) { }
@@ -19,7 +20,13 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.cart = this.CartService.get();
 
+    this.cart.sort((a,b) => a.seller.localeCompare(b.seller));
+
+      this.cart.forEach(product => {
+        this.sum += product.price;
+      });
   }
+
   change(product){
     this.productService.changeFoto(product);
     }
@@ -27,6 +34,7 @@ export class CartComponent implements OnInit {
     removeFromCart(product) {
       
       this.CartService.remove(product, this.cart);  
+      window.location.reload();
     }
 
 }

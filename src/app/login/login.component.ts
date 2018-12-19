@@ -5,7 +5,12 @@ import { UserRestService } from '../services/user-rest.service';
 import { UserService } from '../services/user.service';
 import { user } from '../user';
 import { ModalService } from '../services/modal.service';
+import { RoleService } from '../services/role.service';
 
+interface Role {
+  id;
+  name;
+}
 
 @Component({
   selector: 'app-login',
@@ -16,13 +21,14 @@ export class LoginComponent implements OnInit {
 
   title = 'Logowanie';
   form: FormGroup;
-
+  roles: Role[];
+  currentUser:any;
 
   constructor(
      private fb: FormBuilder,
      private router: Router,
      private userRestService: UserRestService,
-     private UserService: UserService,
+     private userService: UserService,
      private ModalService: ModalService) { }
 
   ngOnInit() {
@@ -35,12 +41,12 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-
+    
     this.userRestService.login({login: this.form.value.login,
       password: this.form.value.password})
       .subscribe ((result: user) => {
         if (result) {
-          this.UserService.set('currentUser', result);
+          this.userService.set('currentUser', result);
           this.router.navigate(['../shop']);
         }
       },

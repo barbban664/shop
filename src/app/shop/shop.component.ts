@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { RoleService } from '../services/role.service';
+import { UserRestService } from '../services/user-rest.service';
 
 @Component({
   selector: 'app-shop',
@@ -15,10 +16,12 @@ export class ShopComponent implements OnInit {
     private router: Router,
     public userService: UserService,
     private CartService: CartService,
-    public RoleService: RoleService) {
+    public RoleService: RoleService,
+    private userRestService: UserRestService) {
   }
 
   currentUser:any;
+  currentSeller:any;
 
   ngOnInit() {
    

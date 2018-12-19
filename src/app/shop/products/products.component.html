@@ -1,8 +1,12 @@
+
 <div class="list-group-item" *ngFor="let product of products">
   <img class="image" width="200" height="200" [src]="'http://localhost:8443/images/'+ product.img[product.count]"
     (click)="change(product)" target="_blank" title="{{product.name}}">
   <div class="product">
-    <div class="producer">Producent: {{product.producer}}</div>
+    <div class="information">
+      <div class="producer">Producent: {{product.producer}}</div>
+      <div class="seller">Sprzedawca: {{product.seller}} </div>
+    </div>
     <div class="name "> {{product.name}}</div>
     <label><input id="more" type="checkbox"> Zobacz więcej
       <div id="content" class="description angular-with-newlines">{{product.description}}
@@ -12,7 +16,7 @@
   </div>
   <button *ngIf="RoleService.user==2" (click)="addProduct(product)" type="button" class="btn btn-warning"> Do koszyka
     <i class="fas fa-shopping-basket"></i></button>
-  <button *ngIf="RoleService.user==3" (click)="edit(product)" [routerLink]="['edit', product.id]" type="button" class="btn btn-warning"> Edytuj</button>
+  <button *ngIf="RoleService.user==3" (click)="edit(product)" [routerLink]="['edit', product.id]" type="button" class="btn btn-warning">
+    Edytuj</button>
   <button *ngIf="RoleService.user==3" (click)="delete(product)" type="button" class="btn btn-warning"> Usuń</button>
-
 </div>

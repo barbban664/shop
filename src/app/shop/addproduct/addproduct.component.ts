@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ProductService } from 'src/app/services/product.service';
 import { RoleService } from 'src/app/services/role.service';
 import { product } from '../products/product';
-import { Subscription } from 'rxjs';
+import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -23,6 +23,7 @@ export class AddproductComponent implements OnInit {
   isEdit:boolean = false;
   isProduct: product;
   Product: any;
+  currentSeller: any;
 
 
   constructor(
@@ -30,24 +31,25 @@ export class AddproductComponent implements OnInit {
     private router: Router,
     private productService: ProductService,
     private RoleService: RoleService,
-    private userService:UserService){ }
+    private userService:UserService,
+    private userRestService: UserRestService){ }
 
   ngOnInit () {
 
     this.currentUser = this.userService.user('currentUser');
     this.RoleService.Role(this.currentUser.role);
     this.isEdit = this.userService.user('isEdit');
-    console.log(this.isEdit)
     this.isProduct = this.userService.user('currentProduct');
 
     this.form = this.fb.group({
       producer: [],
       description: [],
       image: [],
-      tags:[],
+      tags: [],
       price: [null, [Validators.required, Validators.pattern("^[0-9]*$"),]],
       name: [null, [Validators.required]],
-      userId:[]
+      userId: [],
+      login: []
     });
 
     if (this.userService.user('isEdit') != null){
@@ -64,8 +66,6 @@ export class AddproductComponent implements OnInit {
     
     if (this.userService.user('isEdit') == null){
 
-    console.log(this.Product)
-
       this.productService.addProduct({
       producer: this.form.value.producer,
       description: this.form.value.description,
@@ -73,7 +73,7 @@ export class AddproductComponent implements OnInit {
       tags: [this.form.value.tags],
       price: this.form.value.price,
       name: this.form.value.name,
-      userId: this.userService.user('currentUser').id,
+      userId: this.userService.user('currentUser').id
     })
       .subscribe (() => {
         this.router.navigate(['../shop']);
@@ -90,10 +90,8 @@ export class AddproductComponent implements OnInit {
         .subscribe (() => {
           this.router.navigate(['../shop']);
         })
-      }
-      
-      
-        
+      }; 
+
        sessionStorage.removeItem('isEdit');
     };
 
@@ -134,10 +132,6 @@ export class AddproductComponent implements OnInit {
     // });
 
   }
-
-
-
-    
 
 // this.http.post('http://localhost:8443/api/product/add ', {
 

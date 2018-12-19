@@ -1,17 +1,18 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU'
   crossorigin='anonymous'>
-  
+
 
 <div class="cont">
   <div class="logo text-center">Ekstra sklepik <i class="far fa-thumbs-up"></i></div>
-  <div class="btn-group btn-group-lg" >
+  <div class="btn-group btn-group-lg">
     <button class="btn btn-dark" [routerLink]="['.']">Strona główna</button>
     <button *ngIf="RoleService.user==3" class="btn btn-dark" [routerLink]="['./addproduct']">Dodaj przedmiot</button>
     <button *ngIf="RoleService.user==2" class="btn btn-dark" [routerLink]="['./cart']">Koszyk</button>
     <button class="btn btn-dark" (click)=logout()>Wyloguj</button>
   </div>
-  <div class="cart" ><button *ngIf="RoleService.user==2" class="cartButton" [routerLink]="['./cart']">Koszyk: {{productsCart}} szt.</button></div>
+  <div class="cart"><button *ngIf="RoleService.user==2" class="cartButton" [routerLink]="['./cart']">Koszyk:
+      {{productsCart}} szt.</button></div>
   <div class="user"><i class="fas fa-user"></i>{{currentUser.login}}</div>
-  
+
 </div>
 <router-outlet></router-outlet>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Rest } from './rest';
+import { UserService } from './user.service';
+import { Subject } from 'rxjs';
 
 
 interface LoginData {
@@ -21,7 +23,12 @@ interface RegistrationData {
 )
 export class UserRestService extends Rest {
 
-  constructor(private http: HttpClient) {
+  public sellerLogin= new Subject<any>();
+  currentSeller: any;
+
+
+  constructor(private http: HttpClient,
+    private userService: UserService) {
     super();
    }
 
@@ -37,13 +44,23 @@ export class UserRestService extends Rest {
 
     getRole(){
       return this.http.get(this.url + 'user/roles')
-      }
+    }
 
     getProducts(role, userId){
       if (role==1 || role==2){
         return this.http.get(this.url + 'product/list')
       }
       else if (role==3){
-        return this.http.get(this.url + 'product/list/' + userId)}
+        return this.http.get(this.url + 'product/list/' + userId)
       }
+    }
+
+    // generateSeller(data) {
+    //   this.sellerLogin.next(data);
+    // }
+
+    // getSeller(){
+    //   return this.sellerLogin;
+    // }
+
 }

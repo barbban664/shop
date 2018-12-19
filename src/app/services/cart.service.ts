@@ -9,6 +9,7 @@ export class CartService {
 
   cart: product[] = [];
   idx: number;
+  sum: number =0;
 
   add(Product: product) {
     this.cart = this.userService.user('cart');
@@ -40,5 +41,6 @@ export class CartService {
     }
     return cart;
   }
+
 }
 

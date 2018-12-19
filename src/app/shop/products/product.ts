@@ -8,9 +8,10 @@ export class product{
     count: number;
     id: number;
     tags: string;
+    seller: string;
     
 
-constructor(img: any, name:string, description:string, price: number, producer:string, id: number, tags: string){
+constructor(img: any, name:string, description:string, price: number, producer:string, id: number, tags: string, seller: string){
     
     this.img= img;
     this.name= name;
@@ -20,6 +21,7 @@ constructor(img: any, name:string, description:string, price: number, producer:s
     this.count=0;
     this.id = id;
     this.tags= tags;
+    this.seller= seller;
 
 }
 }
