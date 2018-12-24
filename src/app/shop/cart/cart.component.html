@@ -1,19 +1,24 @@
-<div>Do zapłaty: {{sum}}</div>
 <div class="list-group-item" *ngFor="let product of cart">
-  <img class="image" width="200" height="200" [src]="'http://localhost:8443/images/'+ product.img[product.count]"
-    (click)="change(product)" target="_blank" title="{{product.name}}">
-  <div class="product">
-    <div class="information">
-      <div class="producer">Producent: {{product.producer}}</div>
-      <div class="seller">Sprzedawca: {{product.seller}} </div>
-    </div>
-    <div class="name "> {{product.name}}</div>
-    <label><input id="more" type="checkbox"> Zobacz więcej
-      <div id="content" class="description angular-with-newlines">{{product.description}}
-      </div>
-    </label>
-    <div class="price">{{product.price}} zł !</div>
-  </div>
-  <button (click)="removeFromCart(product)" type="button" class="btn btn-warning"> Usuń z koszyka</button>
+  <!-- <div *ngFor="let sum of sumProducts; let i = index"> -->
+    <!-- <div *ngIf="product.seller == sum[key]"> -->
 
-</div>
+      <img class="image" width="200" height="200" [src]="'http://localhost:8443/images/'+ product.img[product.count]"
+        (click)="change(product)" target="_blank" title="{{product.name}}">
+      <div class="product">
+        <div class="information">
+          <div class="producer">Producent: {{product.producer}}</div>
+          <div class="seller">Sprzedawca: {{product.seller}} </div>
+        </div>
+        <div class="name "> {{product.name}}</div>
+        <label><input id="more" type="checkbox"> Zobacz więcej
+          <div id="content" class="description angular-with-newlines">{{product.description}}
+          </div>
+        </label>
+        <div class="price">{{product.price}} zł !</div>
+      </div>
+      <button (click)="removeFromCart(product)" type="button" class="btn btn-warning"> Usuń z koszyka</button>
+      <!-- <div>Do zapłaty: {{sum[i].value}} zł </div> -->
+    </div>
+  <!-- </div>
+
+</div> -->

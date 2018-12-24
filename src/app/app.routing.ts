@@ -22,23 +22,24 @@ export const routes: Routes = [
         path: 'shop',
         component: ShopComponent,
         children: [
-          {
-            path: '',
-            component: ProductsComponent,
-          },
-          {
-            path: 'addproduct',
-            component: AddproductComponent,
-          },
-          {
-          path: 'edit/:productId',
-          component: AddproductComponent,
-        },
-          {
-            path: 'cart',
-            component: CartComponent,
-          },
-        ]},
+            {
+                path: '',
+                component: ProductsComponent,
+            },
+            {
+                path: 'addproduct',
+                component: AddproductComponent,
+            },
+            {
+                path: 'edit/:productId',
+                component: AddproductComponent,
+            },
+            {
+                path: 'cart',
+                component: CartComponent,
+            },
+        ]
+    },
     {
         path: 'registration',
         component: RegistrationComponent,

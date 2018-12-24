@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { ProductService } from 'src/app/services/product.service';
 import { RoleService } from 'src/app/services/role.service';
@@ -17,10 +17,10 @@ export class AddproductComponent implements OnInit {
 
   form: FormGroup;
   files: any[] = [];
-  images= false;
-  currentUser:any;
+  images = false;
+  currentUser: any;
   productEdit: any;
-  isEdit:boolean = false;
+  isEdit: boolean = false;
   isProduct: product;
   Product: any;
   currentSeller: any;
@@ -29,13 +29,16 @@ export class AddproductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private productService: ProductService,
     private RoleService: RoleService,
-    private userService:UserService,
-    private userRestService: UserRestService){ }
+    private userService: UserService,
+    private userRestService: UserRestService) { }
 
-  ngOnInit () {
-
+  ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('productId');
+    console.debug(this.route)
+    console.debug(id)
     this.currentUser = this.userService.user('currentUser');
     this.RoleService.Role(this.currentUser.role);
     this.isEdit = this.userService.user('isEdit');
@@ -52,86 +55,91 @@ export class AddproductComponent implements OnInit {
       login: []
     });
 
-    if (this.userService.user('isEdit') != null){
-
-      this.form.get('name').setValue(this.isProduct.name);
-      this.form.get('producer').setValue(this.isProduct.producer);
-      this.form.get('description').setValue(this.isProduct.description);
-      this.form.get('tags').setValue(this.isProduct.tags);
-      this.form.get('price').setValue(this.isProduct.price);
+    if (this.userService.user('isEdit') != null) {
+      console.debug(this.form)
+      console.debug('klucze', Object.keys(this.form.controls))
+      Object.keys(this.form.controls).forEach((key) => {
+        this.form.get(key).setValue(this.isProduct[key]);
+      })
+      // this.form.get('name').setValue(this.isProduct.name);
+      // this.form.get('producer').setValue(this.isProduct.producer);
+      // this.form.get('description').setValue(this.isProduct.description);
+      // this.form.get('tags').setValue(this.isProduct.tags);
+      // this.form.get('price').setValue(this.isProduct.price);
     }
-   }
+  }
 
   add() {
-    
-    if (this.userService.user('isEdit') == null){
+
+    if (this.userService.user('isEdit') == null) {
 
       this.productService.addProduct({
-      producer: this.form.value.producer,
-      description: this.form.value.description,
-      img: this.files,
-      tags: [this.form.value.tags],
-      price: this.form.value.price,
-      name: this.form.value.name,
-      userId: this.userService.user('currentUser').id
-    })
-      .subscribe (() => {
-        this.router.navigate(['../shop']);
-      })}
-      else {
-        this.productService.editProduct(this.isProduct.id, {
-          producer: this.form.value.producer,
-          description: this.form.value.description,
-          tags: [this.form.value.tags],
-          price: this.form.value.price,
-          name: this.form.value.name,
-          userId: this.userService.user('currentUser').id,
-        })
-        .subscribe (() => {
+        producer: this.form.value.producer,
+        description: this.form.value.description,
+        img: this.files,
+        tags: [this.form.value.tags],
+        price: this.form.value.price,
+        name: this.form.value.name,
+        userId: this.userService.user('currentUser').id
+      })
+        .subscribe(() => {
           this.router.navigate(['../shop']);
         })
-      }; 
-
-       sessionStorage.removeItem('isEdit');
+    }
+    else {
+      this.productService.editProduct(this.isProduct.id, {
+        producer: this.form.value.producer,
+        description: this.form.value.description,
+        tags: [this.form.value.tags],
+        price: this.form.value.price,
+        name: this.form.value.name,
+        userId: this.userService.user('currentUser').id,
+      })
+        .subscribe(() => {
+          this.router.navigate(['../shop']);
+        })
     };
 
-   onFileChange(event){
-     this.files= [];
-     this.images= false;
-     const files= event.target.files;
+    sessionStorage.removeItem('isEdit');
+  };
 
-     let num=0;
-     
-     for(let i=0; i<files.length; i++){
-       const file= files[i];
+  onFileChange(event) {
+    this.files = [];
+    this.images = false;
+    const files = event.target.files;
 
-       const reader= new FileReader();
-       reader.addEventListener('loadend',(e: any)=>{
-         console.debug('Koniec', e);
+    let num = 0;
 
-         const d={};
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
 
-         d['result'] = e.target.result.toString().split(',')[1];
-         d['name']= file.name;
-         this.files.push(d);
-         num +=1;
-         this.images= num >=files.length;
-         console.debug('Files', this.files);
-       });
+      const reader = new FileReader();
+      reader.addEventListener('loadend', (e: any) => {
+        console.debug('Koniec', e);
 
-       reader.readAsDataURL(file)
-     }
+        const d = {};
+
+        d['result'] = e.target.result.toString().split(',')[1];
+        d['name'] = file.name;
+        this.files.push(d);
+        num += 1;
+        this.images = num >= files.length;
+        console.debug('Files', this.files);
+      });
+
+      reader.readAsDataURL(file)
     }
-
-
-    // edit(){
-    //     const data = this.form.value;
-    //       data['img'] = this.files;
-    // this.productService.editProduct(this.form.value, this.productEdit).subscribe(() => {
-    //   this.router.navigate(['../shop']);
-    // });
-
   }
+
+
+  // edit(){
+  //     const data = this.form.value;
+  //       data['img'] = this.files;
+  // this.productService.editProduct(this.form.value, this.productEdit).subscribe(() => {
+  //   this.router.navigate(['../shop']);
+  // });
+
+}
 
 // this.http.post('http://localhost:8443/api/product/add ', {
 
