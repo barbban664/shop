@@ -39,28 +39,23 @@ export class UserRestService extends Rest {
     }
 
     registration(reg: RegistrationData){
-      return this.http.post(this.url + 'user/add', reg)
+      return this.http.post(this.url + 'user/add', reg);
     }
 
     getRole(){
-      return this.http.get(this.url + 'user/roles')
+      return this.http.get(this.url + 'user/roles');
     }
 
     getProducts(role, userId){
       if (role==1 || role==2){
-        return this.http.get(this.url + 'product/list')
+        return this.http.get(this.url + 'product/list');
       }
       else if (role==3){
-        return this.http.get(this.url + 'product/list/' + userId)
+        return this.http.get(this.url + 'product/list/' + userId);
       }
     }
 
-    // generateSeller(data) {
-    //   this.sellerLogin.next(data);
-    // }
-
-    // getSeller(){
-    //   return this.sellerLogin;
-    // }
-
+    getAllUsers(){
+      return this.http.get(this.url + 'user/all');
+    }
 }

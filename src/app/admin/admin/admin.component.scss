@@ -1,0 +1,44 @@
+.logo{
+    float: left;
+    margin-left: 50px;
+    font-size: 27px;
+    padding:17px;
+    color:white; 
+    font-weight: bold;
+}
+
+.cont{
+    background-image: url(../../../A.jpg);
+    background-repeat: repeat;
+    width: 100%;
+}
+
+.btn-dark{
+    padding: 14px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: rgb(53, 53, 53);
+    color:white;
+    font-weight: bold;
+}
+
+// .btn-group{
+//     margin-left: 80px;
+// }
+
+.user{
+    font-weight: bold;
+    color:white;
+    font-size: 16px !important;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    float:right;
+    margin-right: 100px;
+}
+
+.fa-user{
+    margin-right: 5px;
+}

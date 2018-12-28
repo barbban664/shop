@@ -7,11 +7,6 @@ import { user } from '../user';
 import { ModalService } from '../services/modal.service';
 import { RoleService } from '../services/role.service';
 
-interface Role {
-  id;
-  name;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,15 +16,16 @@ export class LoginComponent implements OnInit {
 
   title = 'Logowanie';
   form: FormGroup;
-  roles: Role[];
-  currentUser:any;
+  currentUser: any;
+  role: any;
 
   constructor(
      private fb: FormBuilder,
      private router: Router,
      private userRestService: UserRestService,
      private userService: UserService,
-     private ModalService: ModalService) { }
+     private ModalService: ModalService,
+     private roleService: RoleService) { }
 
   ngOnInit() {
 
@@ -47,7 +43,13 @@ export class LoginComponent implements OnInit {
       .subscribe ((result: user) => {
         if (result) {
           this.userService.set('currentUser', result);
-          this.router.navigate(['../shop']);
+          this.roleService.Role(result.role)
+          if (this.roleService.user == 1) {
+            this.router.navigate(['../admin']);
+          } else {
+            this.router.navigate(['../shop']);
+          }
+          console.log(this.roleService.user)
         }
       },
       

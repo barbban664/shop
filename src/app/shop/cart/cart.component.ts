@@ -14,10 +14,9 @@ export class CartComponent implements OnInit {
   cart: product[] = [];
   cartGroup: any = {};
   sums: Array<any> = [];
-  // sums: any = {};
   sumProducts: any;
   groupedProducts: any;
-  temp: Array<any> = [];
+  sellersVector: any = [];
 
   constructor(private CartService: CartService,
     private productService: ProductService) { }
@@ -26,9 +25,15 @@ export class CartComponent implements OnInit {
     this.cart = this.CartService.get();
 
     this.groupedProducts = this.groupProducts();
+    console.log(this.groupedProducts)
 
     this.sumProducts = this.sumPrice();
-    console.log(this.sumProducts)
+
+    // for(let i = 0; i < this.groupedProducts.length; i++) {
+    //   this.sellersVector.push(this.groupedProducts.key);
+    // }
+
+    // console.log(this.sellersVector)
 
     this.cart.sort((a, b) => a.seller.localeCompare(b.seller));
 
@@ -65,6 +70,11 @@ export class CartComponent implements OnInit {
     // console.log(Object.keys(this.sums).map(key => ({ key, value: this.sums[key] })));
     // console.log(this.sums[Object.keys(this.sums)[0]]);
   }
+
+  // pay(){
+  //   this.groupProducts().forEach((seller) => {
+  //     });
+  // }
 
 
 }

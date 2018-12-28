@@ -1,24 +1,28 @@
-<div class="list-group-item" *ngFor="let product of cart">
-  <!-- <div *ngFor="let sum of sumProducts; let i = index"> -->
-    <!-- <div *ngIf="product.seller == sum[key]"> -->
-
-      <img class="image" width="200" height="200" [src]="'http://localhost:8443/images/'+ product.img[product.count]"
-        (click)="change(product)" target="_blank" title="{{product.name}}">
-      <div class="product">
-        <div class="information">
-          <div class="producer">Producent: {{product.producer}}</div>
-          <div class="seller">Sprzedawca: {{product.seller}} </div>
-        </div>
-        <div class="name "> {{product.name}}</div>
-        <label><input id="more" type="checkbox"> Zobacz więcej
-          <div id="content" class="description angular-with-newlines">{{product.description}}
+<div *ngFor="let sum of sumProducts; let i = index">
+  <div class="list-group-item seller">Sprzedawca: {{sum.key}} </div>
+  <div *ngFor="let product of cart">
+    <div *ngIf="sum.key == product.seller">
+      <div class="list-group-item">
+        <img class="image" width="200" height="200" [src]="'http://localhost:8443/images/'+ product.img[product.count]"
+          (click)="change(product)" target="_blank" title="{{product.name}}">
+        <div class="product">
+          <div class="information">
+            <div class="producer">Producent: {{product.producer}}</div>
+            <div >Sprzedawca: {{product.seller}} </div>
           </div>
-        </label>
-        <div class="price">{{product.price}} zł !</div>
+          <div class="name "> {{product.name}}</div>
+          <label><input id="more" type="checkbox"> Zobacz więcej
+            <div id="content" class="description angular-with-newlines">{{product.description}}
+            </div>
+          </label>
+          <div class="price">{{product.price}} zł !</div>
+        </div>
+        <button (click)="removeFromCart(product)" type="button" class="btn btn-warning"> Usuń z koszyka</button>
       </div>
-      <button (click)="removeFromCart(product)" type="button" class="btn btn-warning"> Usuń z koszyka</button>
-      <!-- <div>Do zapłaty: {{sum[i].value}} zł </div> -->
     </div>
-  <!-- </div>
+  </div>
+  <div class = "list-group-item cost">Do zapłaty: {{sum.value}} zł 
+    <button class = "btn-warning pay" (click)= "pay()">Zapłać</button>
+  </div>
 
-</div> -->
+</div>

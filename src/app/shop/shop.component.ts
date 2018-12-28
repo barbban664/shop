@@ -16,8 +16,7 @@ export class ShopComponent implements OnInit {
     private router: Router,
     public userService: UserService,
     private CartService: CartService,
-    public RoleService: RoleService,
-    private userRestService: UserRestService) {
+    public RoleService: RoleService) {
   }
 
   currentUser:any;
