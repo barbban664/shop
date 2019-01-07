@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRestService } from 'src/app/services/user-rest.service';
 import { user } from 'src/app/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,8 @@ export class UsersComponent implements OnInit {
 
   users: user[];
 
-  constructor(private userRestService: UserRestService) { }
+  constructor(private userRestService: UserRestService,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.userRestService.getAllUsers()
@@ -20,9 +22,18 @@ export class UsersComponent implements OnInit {
          console.log(this.users)
         });
 
-        
-
-
   }
+
+  deleteUser(user) {
+    this.userRestService.deleteUser(user.id).subscribe(
+      (msg) => {
+        console.log("deleted");
+        this.userRestService.getAllUsers()
+      .subscribe((result: user[]) => {
+        this.users = result
+         console.log(this.users)
+      });
+      });
+  };
 
 }
