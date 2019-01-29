@@ -14,22 +14,26 @@
       <label class="font-weight-bold">Login</label>
       <input formControlName="login" class="form-control" placeholder="Wpisz login">
     </div>
-    <div class="form-group">
-      <label class="font-weight-bold">Hasło</label>
-      <input formControlName="password" class="form-control" placeholder="Wpisz hasło" type="password">
+    <div *ngIf="isEditUser == null">
+      <div class="form-group">
+        <label class="font-weight-bold">Hasło</label>
+        <input formControlName="password" class="form-control" placeholder="Wpisz hasło" type="password">
+      </div>
     </div>
-    <div class="form-group">
-      <label class="font-weight-bold">Powtórz hasło</label>
-      <input formControlName="password_confirm" class="form-control" placeholder="Powtórz hasło" type="password">
+    <div *ngIf="isEditUser == null">
+      <div class="form-group">
+        <label class="font-weight-bold">Powtórz hasło</label>
+        <input formControlName="password_confirm" class="form-control" placeholder="Powtórz hasło" type="password">
+      </div>
     </div>
     <div class="form-group">
       <label class="font-weight-bold">Rola użytkownika</label>
-      <select class="form-control" formControlName="role" >
+      <select class="form-control" formControlName="role">
         <option *ngFor="let role of roles" value="{{role.id}}">{{role.name}}</option>
       </select>
     </div>
     <div class="col-12 text-center">
-      <button class="btn btn-warning btn-lg" (click)=add()>Zarejestruj się</button>
+      <button class="btn btn-warning btn-lg" (click)=add()>{{isEditUser ? 'Edytuj' : 'Zarejestruj'}}</button>
     </div>
   </form>
 </div>

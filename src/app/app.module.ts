@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AddproductComponent } from './shop/addproduct/addproduct.component';
 import { CartComponent } from './shop/cart/cart.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './modal/modal.component';
 import { UserRestService } from './services/user-rest.service';
@@ -22,6 +21,7 @@ import { InterceptorService } from './services/interceptor.service';
 import { ModalService } from './services/modal.service';
 import { RoleService } from './services/role.service';
 import { ProductService } from './services/product.service';
+import { UserModule } from './modules/user.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import { ProductService } from './services/product.service';
     LoginComponent,
     AddproductComponent,
     CartComponent,
-    RegistrationComponent,
     ModalComponent,
     ShopComponent,
   ],
@@ -43,10 +42,12 @@ import { ProductService } from './services/product.service';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     BrowserModule,
-	  StorageServiceModule
+    StorageServiceModule,
+    UserModule,
   ],
   
-  providers: [UserRestService,
+  providers: [
+    UserRestService,
   UserService,
   ModalService,
   CartService,
